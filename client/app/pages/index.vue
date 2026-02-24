@@ -29,7 +29,7 @@ const cardUi = {
   <div class="flex flex-col items-center gap-8 font-mono translate-y-50">
     <visual-logo />
 
-    <div class="flex items-center gap-4">
+    <div class="flex flex-col md:flex-row items-center gap-4">
       <UCard
         class="flex flex-col items-center justify-center gap-3 w-70 h-45 hover:shadow-lg dark:hover:shadow-[0_0_20px_rgba(255,255,255,0.1)] transition-all duration-300"
         :ui="cardUi"
@@ -50,7 +50,7 @@ const cardUi = {
         </UButton>
         <span v-else class="text-neutral-500 text-base dark:text-neutral-400"> Not installed </span>
 
-        <div class="flex items-center">
+        <div class="flex items-center" v-if="overview?.oxlint.installed">
           <UButton
             to="/lint/report"
             icon="carbon:report"
@@ -107,7 +107,7 @@ const cardUi = {
         </UButton>
         <span v-else class="text-neutral-500 text-base dark:text-neutral-400"> Not installed </span>
 
-        <div class="flex items-center">
+        <div class="flex items-center" v-if="overview?.oxfmt.installed">
           <UButton
             icon="carbon:settings"
             size="sm"
@@ -133,7 +133,7 @@ const cardUi = {
       </UCard>
     </div>
 
-    <div class="flex items-center gap-6">
+    <div class="flex items-center flex-col md:flex-row gap-6">
       <UButton
         to="https://github.com/yuyinws/oxc-inspector"
         target="_blank"
