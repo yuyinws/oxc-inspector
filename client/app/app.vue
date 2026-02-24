@@ -10,6 +10,8 @@ connect()
   </div>
   <VisualLoading v-else-if="!connectionState.connected" text="Connecting..." />
   <UApp v-else>
-    <NuxtPage />
+    <UMain class="container mx-auto p-4">
+      <NuxtPage />
+    </UMain>
   </UApp>
 </template>

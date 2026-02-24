@@ -7,8 +7,6 @@ export const oxlintGetSession = defineRpcFunction({
   setup: context => {
     return {
       handler: async ({ sessionId }: { sessionId: string }) => {
-        console.log(context)
-
         const logsManager = getLogsManager(context)
         const session = await logsManager.loadSession(sessionId)
         return session

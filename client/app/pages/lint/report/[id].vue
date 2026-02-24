@@ -68,45 +68,33 @@ const showFiles = computed(() => !!filteredFiles.value && filteredFiles.value.le
 </script>
 
 <template>
-  <UApp>
-    <div class="container mx-auto p-4">
-      <main class="flex flex-col gap-4">
-        <UButton
-          class="cursor-pointer w-fit"
-          icon="ph:arrow-bend-up-left-duotone"
-          color="neutral"
-          variant="outline"
-          @click="navigateTo('/')"
-        >
-          Re-select Session
-        </UButton>
-        <!-- 摘要信息 -->
-        <SummaryCard
-          v-if="showSummary && session?.meta.summary"
-          :summary="session.meta.summary"
-          :total-issues="totalIssues"
-          :version="session.meta.version"
-          :config="session.logs.config"
-          :timestamp="session.meta.timestamp"
-        />
+  <div class="flex flex-col gap-4">
+    <Back></Back>
+    <!-- 摘要信息 -->
+    <SummaryCard
+      v-if="showSummary && session?.meta.summary"
+      :summary="session.meta.summary"
+      :total-issues="totalIssues"
+      :version="session.meta.version"
+      :config="session.logs.config"
+      :timestamp="session.meta.timestamp"
+    />
 
-        <Search v-model="search" />
+    <Search v-model="search" />
 
-        <UEmpty
-          v-if="showEmpty"
-          icon="twemoji:partying-face"
-          size="xl"
-          description="Congratulations! There is no oxlint issues."
-        />
+    <UEmpty
+      v-if="showEmpty"
+      icon="twemoji:partying-face"
+      size="xl"
+      description="Congratulations! There is no oxlint issues."
+    />
 
-        <template v-else>
-          <div v-if="showFiles" class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-            <FileCard v-for="file in filteredFiles" :key="file.filename" :file="file" />
-          </div>
+    <template v-else>
+      <div v-if="showFiles" class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <FileCard v-for="file in filteredFiles" :key="file.filename" :file="file" />
+      </div>
 
-          <UEmpty v-else icon="ph:file-duotone" size="xl" description="No files found." />
-        </template>
-      </main>
-    </div>
-  </UApp>
+      <UEmpty v-else icon="ph:file-duotone" size="xl" description="No files found." />
+    </template>
+  </div>
 </template>

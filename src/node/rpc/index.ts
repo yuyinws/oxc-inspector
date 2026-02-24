@@ -2,9 +2,15 @@ import type { RpcDefinitionsToFunctions } from '@vitejs/devtools-kit'
 import { oxlintGetSession } from './functions/oxlint-get-session'
 import { oxlintListSessions } from './functions/oxlint-list-sessions'
 import { overview } from './functions/overview'
+import { oxlintGetConfigFile } from './functions/oxlint-get-config-file'
 import '@vitejs/devtools-kit'
 
-export const rpcFunctions = [oxlintListSessions, oxlintGetSession, overview] as const
+export const rpcFunctions = [
+  oxlintListSessions,
+  oxlintGetSession,
+  overview,
+  oxlintGetConfigFile,
+] as const
 
 export type ServerFunctions = RpcDefinitionsToFunctions<typeof rpcFunctions>
 

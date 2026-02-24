@@ -45,12 +45,6 @@ export default defineNuxtConfig({
   devServer: {
     port: 4448,
   },
-  runtimeConfig: {
-    public: {
-      oxlintVersion: '1.43.0',
-      oxfmtVersion: '0.28.0',
-    },
-  },
   app: {
     baseURL: BASE,
     head: {

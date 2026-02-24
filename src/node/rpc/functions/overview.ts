@@ -27,7 +27,7 @@ export const overview = defineRpcFunction({
         try {
           const { stdout } = await x('oxlint', ['--version'])
           oxlint.installed = true
-          oxlint.version = stdout.split(' ')[1].trim().replaceAll('\n', '')
+          oxlint.version = stdout.split(' ')[1]?.trim().replaceAll('\n', '') ?? undefined
           oxlint.tagUrl = `https://github.com/oxc-project/oxc/releases/tag/oxlint_v${oxlint.version}`
         } catch {
           oxlint.installed = false
@@ -35,7 +35,7 @@ export const overview = defineRpcFunction({
         try {
           const { stdout } = await x('oxfmt', ['--version'])
           oxfmt.installed = true
-          oxfmt.version = stdout.split(' ')[1].trim().replaceAll('\n', '')
+          oxfmt.version = stdout.split(' ')[1]?.trim().replaceAll('\n', '') ?? undefined
           oxfmt.tagUrl = `https://github.com/oxc-project/oxc/releases/tag/oxfmt_v${oxfmt.version}`
         } catch {
           oxfmt.installed = false

@@ -12,6 +12,7 @@
     "prepack": "pnpm build"
   },
   "devDependencies": {
+    "@codemirror/lang-json": "catalog:",
     "@iconify-json/codicon": "catalog:",
     "@iconify-json/lucide": "catalog:",
     "@iconify-json/ph": "catalog:",
@@ -25,17 +26,22 @@
     "@types/picomatch": "catalog:",
     "@vitejs/devtools": "catalog:",
     "@vitejs/devtools-kit": "catalog:",
+    "@vitejs/devtools-rpc": "catalog:",
     "@vueuse/core": "catalog:",
     "@vueuse/nuxt": "catalog:",
+    "codemirror": "catalog:",
+    "codemirror-theme-vitesse": "catalog:",
     "nuxt": "catalog:",
-    "oxlint": "catalog:",
     "oxc-inspector": "workspace:*",
+    "oxlint": "catalog:",
     "pathe": "catalog:",
     "picomatch": "catalog:",
     "shiki": "catalog:",
     "tailwindcss": "catalog:",
     "vue": "catalog:",
-    "vue-router": "catalog:",
-    "@vitejs/devtools-rpc": "catalog:"
+    "vue-router": "catalog:"
+  },
+  "dependencies": {
+    "@humanwhocodes/momoa": "catalog:"
   }
 }

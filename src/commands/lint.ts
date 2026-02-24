@@ -6,7 +6,7 @@ import {
   getOxlintConfig,
   getOxlintVersion,
   groupByFilename,
-} from '../utils'
+} from '../node/utils/oxlint'
 import { mkdir, writeFile } from 'node:fs/promises'
 import { cwd } from 'node:process'
 import c from 'ansis'
