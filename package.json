@@ -1,7 +1,7 @@
 {
   "type": "module",
   "name": "oxc-inspector",
-  "version": "0.0.1-beta.3",
+  "version": "0.0.1-beta.4",
   "packageManager": "pnpm@10.29.3",
   "description": "Inspect and understand your Oxlint toolchain better.",
   "sideEffects": false,
