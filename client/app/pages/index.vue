@@ -109,11 +109,12 @@ const cardUi = {
 
         <div class="flex items-center" v-if="overview?.oxfmt.installed">
           <UButton
+            to="/fmt/config"
             icon="carbon:settings"
             size="sm"
             variant="link"
             trailing-icon
-            class="text-neutral-500 dark:text-neutral-400 cursor-pointer"
+            class="text-neutral-500 dark:text-neutral-400"
           >
             Config
           </UButton>
