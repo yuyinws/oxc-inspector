@@ -1,4 +1,3 @@
-import type {} from '@vitejs/devtools'
 import type { ServerFunctions } from '../../../src/node/rpc'
 import { useRuntimeConfig } from '#app/nuxt'
 import { getDevToolsRpcClient } from '@vitejs/devtools-kit/client'

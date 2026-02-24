@@ -119,7 +119,7 @@ const cardUi = {
           </UButton>
 
           <UButton
-            to="https://oxc.rs/docs/guide/usage/linter.html"
+            to="https://oxc.rs/docs/guide/usage/formatter.html"
             target="_blank"
             icon="carbon:document"
             size="sm"
@@ -144,13 +144,23 @@ const cardUi = {
         Star on GitHub
       </UButton>
       <UButton
-        to="https://github.com/yuyinws/oxc-inspector/discussions"
+        to="https://github.com/yuyinws/oxc-inspector/discussions/4"
         target="_blank"
         icon="lucide:lightbulb"
         variant="link"
         class="text-neutral-500 dark:text-neutral-400"
       >
         Ideas & Suggestions
+      </UButton>
+
+      <UButton
+        to="https://github.com/yuyinws/oxc-inspector/issues"
+        target="_blank"
+        icon="lucide:bug"
+        variant="link"
+        class="text-neutral-500 dark:text-neutral-400"
+      >
+        Bug Reports
       </UButton>
     </div>
   </div>

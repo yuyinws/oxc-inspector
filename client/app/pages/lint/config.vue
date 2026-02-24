@@ -88,7 +88,7 @@ function getMemberRange(member: MemberNode, content: string): { from: number; to
 }
 
 function initConfigRanges(content: string) {
-  const ast = parse(content, { ranges: true })
+  const ast = parse(content, { ranges: true, mode: 'json5' })
   const root = ast.body
   if (root.type !== 'Object') return
 
@@ -119,7 +119,9 @@ function initConfigRanges(content: string) {
     '$schema',
   ] as const
 
-  for (const { node } of iterator(ast, ({ phase }) => phase === 'enter')) {
+  const rootObject = root as ObjectNode
+
+  for (const { node, parent } of iterator(ast, ({ phase }) => phase === 'enter')) {
     if (node.type === 'Member') {
       const member = node as MemberNode
       const name =
@@ -129,22 +131,20 @@ function initConfigRanges(content: string) {
 
       const { from, to } = getMemberRange(member, content)
 
+      if (parent !== rootObject) continue
+
       if (SECTION_KEYS.includes(name as (typeof SECTION_KEYS)[number]))
         result[name as (typeof SECTION_KEYS)[number]] = { from, to }
       else if (name === 'rules' && member.value.type === 'Object') {
         const rulesObject = member.value as ObjectNode
-        const members: RuleRange[] = []
-        for (const { node: n, parent } of iterator(ast, ({ phase }) => phase === 'enter')) {
-          if (n.type === 'Member' && parent === rulesObject) {
-            const m = n as MemberNode
-            const key =
-              m.name.type === 'String'
-                ? (m.name as StringNode).value
-                : (m.name as { name: string }).name
-            const range = getMemberRange(m, content)
-            members.push({ key, ...range })
-          }
-        }
+        const members: RuleRange[] = rulesObject.members.map(m => {
+          const key =
+            m.name.type === 'String'
+              ? (m.name as StringNode).value
+              : (m.name as { name: string }).name
+          const { from, to } = getMemberRange(m, content)
+          return { key, from, to }
+        })
         result.rules = {
           from,
           to,
@@ -249,7 +249,7 @@ onBeforeUnmount(() => {
 
 <template>
   <div class="h-[calc(100vh-4rem)] max-w-7xl p-4 mx-auto">
-    <Back />
+    <Back to="/" />
     <div
       class="flex flex-col h-full lg:flex-row border border-neutral-200 dark:border-neutral-700 rounded-lg overflow-hidden bg-white dark:bg-neutral-950"
     >

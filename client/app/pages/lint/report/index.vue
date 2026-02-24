@@ -23,7 +23,7 @@ const filteredSessionMetaList = computed(() => {
 
 <template>
   <div class="flex flex-col gap-4">
-    <Back></Back>
+    <Back />
     <div class="flex justify-between items-center w-full">
       <div class="flex items-center gap-2">
         <UButton

@@ -1,4 +1,17 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const { to = '' } = defineProps<{
+  to?: string
+}>()
+
+function goBack() {
+  if (to) {
+    navigateTo(to, { replace: true })
+  } else {
+    window.focus()
+    useRouter().back()
+  }
+}
+</script>
 
 <template>
   <u-button
@@ -6,7 +19,7 @@
     color="neutral"
     variant="outline"
     class="cursor-pointer mb-2 w-fit"
-    @click="$router.back()"
+    @click="goBack"
   >
     Back
   </u-button>

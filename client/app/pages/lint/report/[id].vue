@@ -69,7 +69,7 @@ const showFiles = computed(() => !!filteredFiles.value && filteredFiles.value.le
 
 <template>
   <div class="flex flex-col gap-4">
-    <Back></Back>
+    <Back to="/lint/report" />
     <!-- 摘要信息 -->
     <SummaryCard
       v-if="showSummary && session?.meta.summary"
