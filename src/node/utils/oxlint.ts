@@ -27,15 +27,15 @@ export async function getOxlintConfig() {
   }
 }
 
-function wrapOxlintCommand(rawArgs: string[], buildMode?: boolean) {
-  const args = buildMode ? rawArgs.slice(1) : rawArgs
+function wrapOxlintCommand(rawArgs: string[]) {
+  const args = rawArgs.slice(1)
   const commandArgs = ['npx', '--yes', 'oxlint', '-f', 'json', ...args]
   return commandArgs.join(' ')
 }
 
-export function execOxlintCommand(rawArgs: string[], buildMode?: boolean) {
+export function execOxlintCommand(rawArgs: string[]) {
   try {
-    const oxlintCommand = wrapOxlintCommand(rawArgs, buildMode)
+    const oxlintCommand = wrapOxlintCommand(rawArgs)
     const output = execSync(oxlintCommand, { encoding: 'utf-8', stdio: ['pipe', 'pipe', 'pipe'] })
     return output
   } catch (error) {

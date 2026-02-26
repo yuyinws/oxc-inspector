@@ -49,7 +49,7 @@ export const lint = define({
 
     const oxLintVersion = await getOxlintVersion()
     const config = await getOxlintConfig()
-    const rawOutput = execOxlintCommand(_, false)
+    const rawOutput = execOxlintCommand(_)
     const groupedOutput = await groupByFilename(rawOutput)
 
     const logsRootDir = resolve(cwd(), '.oxc-inspector', 'lint')
