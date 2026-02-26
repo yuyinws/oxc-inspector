@@ -4,7 +4,8 @@ import { x } from 'tinyexec'
 type Package = {
   installed: boolean
   version: string | undefined
-  tagUrl: string | undefined
+  latest: boolean
+  npmxLink: string | undefined
 }
 
 export const overview = defineRpcFunction({
@@ -15,20 +16,26 @@ export const overview = defineRpcFunction({
       handler: async () => {
         let oxlint: Package = {
           installed: false,
+          latest: true,
           version: undefined,
-          tagUrl: undefined,
+          npmxLink: undefined,
         }
         let oxfmt: Package = {
           installed: false,
+          latest: true,
           version: undefined,
-          tagUrl: undefined,
+          npmxLink: undefined,
         }
+
+        const res = await fetch('https://npm.antfu.dev/oxlint+oxfmt')
+        const [oxlintData, oxfmtData] = await res.json()
 
         try {
           const { stdout } = await x('oxlint', ['--version'])
           oxlint.installed = true
           oxlint.version = stdout.split(' ')[1]?.trim().replaceAll('\n', '') ?? undefined
-          oxlint.tagUrl = `https://github.com/oxc-project/oxc/releases/tag/oxlint_v${oxlint.version}`
+          oxlint.latest = oxlint.version === oxlintData.version
+          oxlint.npmxLink = `https://npmx.dev/package/oxlint/v/${oxlint.version}`
         } catch {
           oxlint.installed = false
         }
@@ -36,7 +43,8 @@ export const overview = defineRpcFunction({
           const { stdout } = await x('oxfmt', ['--version'])
           oxfmt.installed = true
           oxfmt.version = stdout.split(' ')[1]?.trim().replaceAll('\n', '') ?? undefined
-          oxfmt.tagUrl = `https://github.com/oxc-project/oxc/releases/tag/oxfmt_v${oxfmt.version}`
+          oxfmt.latest = oxfmt.version === oxfmtData.version
+          oxfmt.npmxLink = `https://npmx.dev/package/oxfmt/v/${oxfmt.version}`
         } catch {
           oxfmt.installed = false
         }

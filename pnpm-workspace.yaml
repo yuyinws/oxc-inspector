@@ -12,7 +12,7 @@ catalog:
   '@iconify-json/radix-icons': ^1.2.6
   '@iconify-json/twemoji': ^1.2.5
   '@iconify-json/vscode-icons': ^1.2.42
-  '@nuxt/kit': ^4.3.1
+  '@nuxt/kit': 4.3.0
   '@nuxt/ui': ^4.4.0
   '@shikijs/langs': ^3.22.0
   '@shikijs/themes': ^3.22.0
@@ -32,7 +32,7 @@ catalog:
   h3: 2.0.1-rc.14
   lint-staged: ^16.2.7
   modern-monaco: ^0.3.8
-  nuxt: ^4.3.1
+  nuxt: 4.3.0
   oxfmt: ^0.32.0
   oxlint: ^1.47.0
   pathe: ^2.0.3
