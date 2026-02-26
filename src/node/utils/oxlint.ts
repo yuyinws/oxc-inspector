@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url'
 import { resolve } from 'pathe'
 
 export function getOxcInspectorVersion() {
-  const { version } = createRequire(import.meta.url)('../package.json')
+  const { version } = createRequire(import.meta.url)('../../../package.json')
 
   return version
 }
@@ -15,7 +15,7 @@ export function getOxcInspectorVersion() {
 export async function getOxlintVersion() {
   try {
     const version = execSync('npx oxlint --version', { encoding: 'utf-8' })
-    return version.split(' ')[1].replaceAll('\n', '')
+    return version.split(' ')[1]?.replaceAll('\n', '') ?? undefined
   } catch {
     console.error('Oxlint is not installed, please install it first')
     exit(1)

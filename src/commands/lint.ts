@@ -1,4 +1,4 @@
-import { intro, outro, spinner } from '@clack/prompts'
+import { intro, outro, spinner, log } from '@clack/prompts'
 import { define } from 'gunshi'
 import {
   execOxlintCommand,
@@ -7,7 +7,7 @@ import {
   getOxlintVersion,
   groupByFilename,
 } from '../node/utils/oxlint'
-import { mkdir, writeFile } from 'node:fs/promises'
+import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import { cwd } from 'node:process'
 import c from 'ansis'
 import { relative, resolve } from 'pathe'
@@ -18,8 +18,35 @@ export const lint = define({
   run: async ({ _ }) => {
     const spin = spinner()
 
-    intro(`Using Oxc Inspector v${getOxcInspectorVersion()}`)
+    intro(`Oxc Inspector ${c.cyan(`v${getOxcInspectorVersion()}`)}`)
+
+    const gitignorePath = resolve(cwd(), '.gitignore')
+    let appended = false
+    try {
+      const content = await readFile(gitignorePath, 'utf-8')
+      const hasEntry = content.split('\n').some(line => {
+        const trimmed = line.trim()
+        return trimmed !== '' && !trimmed.startsWith('#') && /\.oxc-inspector/.test(trimmed)
+      })
+      if (!hasEntry) {
+        const append = content.endsWith('\n') ? '.oxc-inspector\n' : '\n.oxc-inspector\n'
+        await writeFile(gitignorePath, content + append, 'utf-8')
+        appended = true
+      }
+    } catch (err) {
+      if ((err as NodeJS.ErrnoException).code === 'ENOENT') {
+        await writeFile(gitignorePath, '.oxc-inspector\n', 'utf-8')
+        appended = true
+      } else {
+        throw err
+      }
+    }
+    if (appended) {
+      log.info('Appended .oxc-inspector to .gitignore')
+    }
+
     spin.start('Running Oxlint...')
+
     const oxLintVersion = await getOxlintVersion()
     const config = await getOxlintConfig()
     const rawOutput = execOxlintCommand(_, false)
