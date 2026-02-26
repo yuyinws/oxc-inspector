@@ -6,6 +6,8 @@
  Inspect and understand your Oxc toolchain better
 </p>
 
+[![Open on npmx.dev](https://npmx.dev/api/registry/badge/version/oxc-inspector)](https://npmx.dev/package/oxc-inspector)
+
 ## ✨ Features
 
 - **Easy to use**: Launch from the CLI or integrate with [Vite Devtools](https://github.com/vitejs/devtools)
