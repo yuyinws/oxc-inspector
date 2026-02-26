@@ -84,7 +84,7 @@ export const lint = define({
     )
     spin.stop()
 
-    outro(`Session created: ${c.cyan(relative(cwd(), sessionDir))}`)
+    outro(`Oxlint logs generated in ${c.cyan(relative(cwd(), sessionDir))}`)
     process.exit(0)
   },
 })
