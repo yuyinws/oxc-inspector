@@ -1,5 +1,5 @@
 <p align='center'>
-  <img src="https://cdn.jsdelivr.net/gh/yuyinws/static@master/2026/02/upgit_20260226_1772086007.png" >
+  <img width="600" src="https://cdn.jsdelivr.net/gh/yuyinws/static@master/2026/02/upgit_20260226_1772089231.png" >
 </p>
 
 <p align='center'>
@@ -10,9 +10,9 @@
 
 - **Easy to use**: Launch from the CLI or integrate with [Vite Devtools](https://github.com/vitejs/devtools)
 
-- **Visualize lint results**: View and explore lint output in an intuitive interface
+- **Visualize lint output**: Inspect lint output in an intuitive interface
 
-- **Config helper**: Easier to understand oxlint and oxfmt config files
+- **Config helper**: Easier to understand oxlint and oxfmt config file
 
 ## 🚀 Usage
 
