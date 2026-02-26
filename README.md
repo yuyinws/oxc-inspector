@@ -14,6 +14,14 @@
 
 - **Config helper**: Easier to understand oxlint and oxfmt config file
 
+## 📷 Snapshots
+
+![CleanShot 2026-02-26 at 15.58.11@2x](https://cdn.jsdelivr.net/gh/yuyinws/static@master/2026/02/upgit_20260226_1772092928.png)
+
+![CleanShot 2026-02-26 at 15.59.26@2x](https://cdn.jsdelivr.net/gh/yuyinws/static@master/2026/02/upgit_20260226_1772092944.png)
+
+![CleanShot 2026-02-26 at 16.00.25@2x](https://cdn.jsdelivr.net/gh/yuyinws/static@master/2026/02/upgit_20260226_1772092955.png)
+
 ## 🚀 Usage
 
 ### Install
