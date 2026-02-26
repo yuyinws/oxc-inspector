@@ -2,7 +2,6 @@ import { intro, outro, spinner, log } from '@clack/prompts'
 import { define } from 'gunshi'
 import {
   execOxlintCommand,
-  getOxcInspectorVersion,
   getOxlintConfig,
   getOxlintVersion,
   groupByFilename,
@@ -11,6 +10,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import { cwd } from 'node:process'
 import c from 'ansis'
 import { relative, resolve } from 'pathe'
+import { version } from '../../package.json'
 
 export const lint = define({
   name: 'lint',
@@ -18,7 +18,7 @@ export const lint = define({
   run: async ({ _ }) => {
     const spin = spinner()
 
-    intro(`Oxc Inspector ${c.cyan(`v${getOxcInspectorVersion()}`)}`)
+    intro(`Oxc Inspector ${c.cyan(`v${version}`)}`)
 
     const gitignorePath = resolve(cwd(), '.gitignore')
     let appended = false

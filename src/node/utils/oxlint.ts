@@ -1,16 +1,9 @@
 import { execSync } from 'node:child_process'
 import { readFile } from 'node:fs/promises'
-import { createRequire } from 'node:module'
 import { dirname } from 'node:path'
 import { cwd, exit } from 'node:process'
 import { fileURLToPath } from 'node:url'
 import { resolve } from 'pathe'
-
-export function getOxcInspectorVersion() {
-  const { version } = createRequire(import.meta.url)('../../../package.json')
-
-  return version
-}
 
 export async function getOxlintVersion() {
   try {
