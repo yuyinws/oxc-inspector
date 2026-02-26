@@ -3,7 +3,7 @@
 </p>
 
 <p align='center'>
- Inspect and understand your Oxc toolchain better
+ Inspect and understand the Oxc toolchain with ease.
 </p>
 
 [![Open on npmx.dev](https://npmx.dev/api/registry/badge/version/oxc-inspector)](https://npmx.dev/package/oxc-inspector)

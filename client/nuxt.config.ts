@@ -52,7 +52,7 @@ export default defineNuxtConfig({
       meta: [
         {
           name: 'description',
-          content: 'Inspect and understand your Oxc toolchain better.',
+          content: 'Inspect and understand the Oxc toolchain with ease.',
         },
       ],
       link: [
