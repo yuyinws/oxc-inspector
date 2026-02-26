@@ -1,9 +1,9 @@
 import { DevTools } from '@vitejs/devtools'
 import { defineConfig } from 'vite'
-import { DevToolsOxlint } from 'oxc-inspector/vite'
+import { DevToolsOxc } from 'oxc-inspector/vite'
 
 export default defineConfig({
-  plugins: [DevTools(), DevToolsOxlint()],
+  plugins: [DevTools(), DevToolsOxc()],
   build: {
     rolldownOptions: {
       devtools: {}, // enable devtools mode

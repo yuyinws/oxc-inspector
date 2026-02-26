@@ -2,7 +2,7 @@ import type { PluginWithDevTools } from '@vitejs/devtools-kit'
 import { rpcFunctions } from './node/rpc'
 import { clientPublicDir } from './dirs'
 
-export function DevToolsOxlint(): PluginWithDevTools {
+export function DevToolsOxc(): PluginWithDevTools {
   return {
     name: 'oxc-inspector',
     devtools: {
@@ -14,7 +14,7 @@ export function DevToolsOxlint(): PluginWithDevTools {
         ctx.views.hostStatic('/.oxc-inspector/', clientPublicDir)
 
         ctx.docks.register({
-          id: 'oxc',
+          id: 'oxc-inspector',
           title: 'Oxc Inspector',
           icon: 'https://viteplus.dev/projects/oxc.svg',
           type: 'iframe',
