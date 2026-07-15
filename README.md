@@ -1,3 +1,6 @@
+> [!IMPORTANT]  
+> This repository has been migrated to [vitejs/devtools](https://github.com/vitejs/devtools/tree/main/packages/oxc). Now it is read-only.
+
 <p align='center'>
   <img width="600" src="https://cdn.jsdelivr.net/gh/yuyinws/static@master/2026/02/upgit_20260226_1772089231.png" >
 </p>
